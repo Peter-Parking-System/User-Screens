@@ -31,7 +31,9 @@ class _OptionsState extends State<Options> {
               ),
               ),
               SizedBox(height: 25,),
-              ElevatedButton(onPressed: (){}, child: Text("Park",style: TextStyle(
+              ElevatedButton(onPressed: (){
+                Navigator.pushNamed(context, "/park");
+              }, child: Text("Park",style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -40,7 +42,9 @@ class _OptionsState extends State<Options> {
               ),
 
               SizedBox(height: 25,),
-              ElevatedButton(onPressed: (){}, child: Text("Remove",style: TextStyle(
+              ElevatedButton(onPressed: (){
+                Navigator.pushNamed(context, "/remove");
+              }, child: Text("Remove",style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,

@@ -28,7 +28,18 @@ class _AdminState extends State<Admin> {
                 style:TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                ) ,)
+                ) ,),
+              ElevatedButton(onPressed: (){
+                Navigator.pushNamed(context, "/login");
+              }, child: Text(""
+                  "Done",
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              ),
             ],
           ),
         ),

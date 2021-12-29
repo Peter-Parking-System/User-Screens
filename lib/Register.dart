@@ -30,6 +30,11 @@ class _RegisterState extends State<Register> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
+              Text("FOR NEW USERS ONLY",style: TextStyle(
+                color: Colors.black54,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),),
               SizedBox(height: 20,),
               TextField(
                 controller: car_no_control,
