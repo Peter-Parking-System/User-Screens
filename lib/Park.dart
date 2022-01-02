@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:peter_parking/DataFIle.dart';
 
 class Park extends StatefulWidget {
   const Park({Key? key}) : super(key: key);
@@ -9,54 +11,93 @@ class Park extends StatefulWidget {
 
 class _ParkState extends State<Park> {
   @override
+  final usercontrol=new TextEditingController();
+  final rccontrol=new TextEditingController();
+
+  String user="";
+  String rcno="";
+  int userid=0;
+  int lot=0;
+
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Peter Parking System",
-          style: TextStyle(
-              color: Colors.red,
-              fontWeight: FontWeight.bold,
-              fontSize: 18
-          ),),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Card(
-              color: Colors.redAccent,
-                 elevation: 10,
-                 child:Text("Your entry time is:",
-                 style: TextStyle(
-                    fontSize: 18,
-                   fontWeight: FontWeight.bold,
-                 ),
-                 ),
-            ),
-            SizedBox(height: 20,),
-            Card(
-              elevation: 10,
-              child: Text("Your lot and floor is:",
-              style: TextStyle(
-              color: Colors.red,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              ),
-              ),
-            ),
-            ElevatedButton(onPressed: (){
-              Navigator.pushNamed(context, "/login");
-            }, child: Text("Got It",
+    return Center(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Peter Parking System",
             style: TextStyle(
-              color: Colors.amberAccent,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-            ),
-            )
-          ],
+                fontWeight: FontWeight.bold,
+                fontSize: 20
+            ),),
         ),
-      ),
-    );
+        body: SingleChildScrollView(
+          child: Container(
+            margin: EdgeInsets.fromLTRB(50, 25, 50, 25),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Card(
+                        margin: EdgeInsets.all(10),
+                           elevation: 20,
+                           child:TextField(
+                            controller: usercontrol,
+                            decoration: InputDecoration(
+                              hintText:"Enter User Id",
+                              labelText: "User Id",
+                              labelStyle: TextStyle(
+                                color: Colors.amber,
+                                fontWeight: FontWeight.bold,
+                              )
+                            ),
+                           ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Card(
+                        margin: EdgeInsets.all(10),
+                        elevation: 20,
+                        child:TextField(
+                          controller: rccontrol,
+                          decoration: InputDecoration(
+                              hintText:"Enter RC Number",
+                              labelText: "RC Number",
+                              labelStyle: TextStyle(
+                                color: Colors.amber,
+                                fontWeight: FontWeight.bold,
+                              )
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(onPressed: (){
+                    setState(() {
+                      rcno=rccontrol.text;
+                      user=usercontrol.text;
+                      userid=int.parse(user);
+                      // print(rcno);
+                      // print(userid);
+                    });
+                    Navigator.pushNamed(context, "/Park2");
+                  }, child: Text("Park",
+                  style: TextStyle(
+                    color: Colors.amberAccent,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  ),
+                  ),
+                ],
+              ),
+          ),
+        ),
+        ),
+      );
   }
 }

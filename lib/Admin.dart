@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:peter_parking/DataFIle.dart';
 
 class Admin extends StatefulWidget {
   const Admin({Key? key}) : super(key: key);
@@ -30,7 +32,7 @@ class _AdminState extends State<Admin> {
                   fontWeight: FontWeight.bold,
                 ) ,),
               ElevatedButton(onPressed: (){
-                Navigator.pushNamed(context, "/login");
+                Navigator.pushNamed(context, "/Main");
               }, child: Text(""
                   "Done",
                 style: TextStyle(

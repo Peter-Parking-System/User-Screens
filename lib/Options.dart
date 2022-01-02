@@ -12,48 +12,70 @@ class _OptionsState extends State<Options> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Peter Parking System",
-          style: TextStyle(
-              color: Colors.red,
-              fontWeight: FontWeight.bold,
-              fontSize: 18
-          ),),
+        title: Center(
+          child: Text(
+            "Peter Parking System",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18+2
+            ),
+          ),
+        ),
       ),
       body: Center(
-        child: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.all(25),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text("Do you want to park the car or take the car out?",
-              style: TextStyle(
-              color: Colors.red,
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              ),
-              ),
-              SizedBox(height: 25,),
-              ElevatedButton(onPressed: (){
-                Navigator.pushNamed(context, "/park");
-              }, child: Text("Park",style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-              ),
-              ),
-
-              SizedBox(height: 25,),
-              ElevatedButton(onPressed: (){
-                Navigator.pushNamed(context, "/remove");
-              }, child: Text("Remove",style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(50, 25, 50, 25),
+                child: Card(
+                  color: Colors.lightBlueAccent,
+                  child: Padding(
+                    padding: EdgeInsets.all(15),
+                    child:TextButton(
+                      onPressed: (){
+                        Navigator.pushNamed(context, "/AddCar");
+                      },
+                      child: Text(
+                        "ADD",
+                        style: TextStyle(
+                          color: Colors.amber,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                    )
+                    ),
+                  ),
+                ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(50, 25, 50, 25),
+                child: Card(
+                  color: Colors.lightBlueAccent,
+                  child: Padding(
+                      padding: EdgeInsets.all(15),
+                      child:TextButton(
+                        onPressed: (){
+                          Navigator.pushNamed(context, "/RemoveCar");
+                        },
+                        child: Text(
+                          "REMOVE",
+                          style: TextStyle(
+                            color: Colors.amber,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      )
+                  ),
+                ),
               ),
             ],
           ),
-        ),
+          ),
       ),
     );
   }
