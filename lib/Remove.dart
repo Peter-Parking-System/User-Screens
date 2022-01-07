@@ -76,7 +76,7 @@ class _RemoveState extends State<Remove> {
                       // print(userid);
                     }
                     );
-                    Navigator.pushNamed(context, "/Remove2");
+                    Navigator.pushReplacementNamed(context, "/Remove2");
                   }, child: Text("Exit Parking",
                     style: TextStyle(
                       color: Colors.amberAccent,

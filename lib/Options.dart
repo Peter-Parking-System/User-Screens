@@ -37,7 +37,7 @@ class _OptionsState extends State<Options> {
                     padding: EdgeInsets.all(15),
                     child:TextButton(
                       onPressed: (){
-                        Navigator.pushNamed(context, "/AddCar");
+                        Navigator.pushReplacementNamed(context, "/AddCar");
                       },
                       child: Text(
                         "ADD",
@@ -59,7 +59,7 @@ class _OptionsState extends State<Options> {
                       padding: EdgeInsets.all(15),
                       child:TextButton(
                         onPressed: (){
-                          Navigator.pushNamed(context, "/RemoveCar");
+                          Navigator.pushReplacementNamed(context, "/RemoveCar");
                         },
                         child: Text(
                           "REMOVE",

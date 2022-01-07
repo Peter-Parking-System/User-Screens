@@ -98,7 +98,7 @@ class _AddCarState extends State<AddCar> {
                       ownerid=owner_id_controller;
                       model=model_controller;
                     });
-                    Navigator.pushNamed(context, "/Main");
+                    Navigator.pushReplacementNamed(context, "/Main");
                   }, child: Text("Submit",
                     style: TextStyle(
                       color: Colors.amber,

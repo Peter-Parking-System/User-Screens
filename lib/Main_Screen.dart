@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:peter_parking/DataFIle.dart';
+
 
 class Main_Screen extends StatefulWidget {
   const Main_Screen({Key? key}) : super(key: key);
@@ -75,7 +75,7 @@ class _Main_ScreenState extends State<Main_Screen> {
                   child: Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: TextButton(onPressed: (){
-                      Navigator.pushNamed(context, "/Register");
+                      Navigator.pushReplacementNamed(context, "/Register");
                     }, child: Text(
                       "User Registration",
                       style: TextStyle(
@@ -91,7 +91,7 @@ class _Main_ScreenState extends State<Main_Screen> {
                   child: Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: TextButton(onPressed: (){
-                      Navigator.pushNamed(context, "/Options");
+                      Navigator.pushReplacementNamed(context, "/Options");
                     }, child: Text(
                       "Add/Remove a Car",
                       style: TextStyle(
@@ -107,7 +107,7 @@ class _Main_ScreenState extends State<Main_Screen> {
                   child: Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: TextButton(onPressed: (){
-                      Navigator.pushNamed(context, "/AdminLogin");
+                      Navigator.pushReplacementNamed(context, "/AdminLogin");
 
                     }, child: Text(
                       "Admin Login",

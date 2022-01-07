@@ -70,7 +70,7 @@ class _RemoveCarState extends State<RemoveCar> {
                   setState(() {
                     rc_no=rc_no_controller;
                   });
-                  Navigator.pushNamed(context, "/Main");
+                  Navigator.pushReplacementNamed(context, "/Main");
                 }, child: Text("Submit",
                   style: TextStyle(
                     color: Colors.amber,

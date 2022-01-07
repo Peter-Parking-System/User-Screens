@@ -43,16 +43,13 @@ class _ParkState extends State<Park2> {
                     child: Card(
                       margin: EdgeInsets.all(10),
                       elevation: 20,
-                      child:TextField(
-                        controller: usercontrol,
-                        decoration: InputDecoration(
-                            hintText:"Enter User Id",
-                            labelText: "User Id",
-                            labelStyle: TextStyle(
+                      child:Text(
+                        "User Id",
+                            style: TextStyle(
                               color: Colors.amber,
+                              fontSize: 30,
                               fontWeight: FontWeight.bold,
                             )
-                        ),
                       ),
                     ),
                   ),
@@ -63,21 +60,17 @@ class _ParkState extends State<Park2> {
                     child: Card(
                       margin: EdgeInsets.all(10),
                       elevation: 20,
-                      child:TextField(
-                        controller: rccontrol,
-                        decoration: InputDecoration(
-                            hintText:"Enter RC Number",
-                            labelText: "RC Number",
-                            labelStyle: TextStyle(
+                      child:Text(
+                         "RC Number",
+                            style:TextStyle(
                               color: Colors.amber,
                               fontWeight: FontWeight.bold,
+                              fontSize: 30
                             )
                         ),
                       ),
                     ),
-                  ),
                 ),
-
                 Card(
                   elevation: 30,
                   child: Padding(
@@ -102,7 +95,7 @@ class _ParkState extends State<Park2> {
                   //   // print(rcno);
                   //   // print(userid);
                   // });
-                  Navigator.pushNamed(context, "/Main");
+                  Navigator.pushReplacementNamed(context, "/Main");
                 }, child: Text("Got It",
                   style: TextStyle(
                     color: Colors.amberAccent,

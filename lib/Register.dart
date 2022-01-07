@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:peter_parking/DataFIle.dart';
 
 class Register extends StatefulWidget {
@@ -10,15 +11,30 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  var name;
-  var locality;
-  var phone;
-  var user_id;
+  String name="";
+  String locality="";
+  String phone="";
+  String user_res="";
 
   final name_control= new TextEditingController();
   final ph_no_control= new TextEditingController();
   final locality_control= new TextEditingController();
+
+  Future<http.Response> register(String name, String ph_number,String local) async {
+    return http.post(Uri.parse('http://10.0.2.2:6060/Owner/newOwner'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: json.encode(<String, String>{
+        'name': name,
+        'locality': local,
+        'phone_no':ph_number,
+      }),
+    );
+  }
+
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -88,13 +104,18 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                   ),
-                  ElevatedButton(onPressed: (){
-                    setState(() {
-                      name=name_control;
-                      locality=locality_control;
-                      phone=ph_no_control;
-                    });
-                  }, child: Text("Submit",
+                  ElevatedButton(onPressed: ()
+                              async{
+                              name=name_control.text;
+                              locality=locality_control.text;
+                              phone=ph_no_control.text;
+
+                              http.Response response=await register(name, locality  ,phone);
+                              Map data = json.decode(response.body);
+                              int user_id=data['message'];
+                              print(user_id);
+                  },
+                    child: Text("Submit",
                     style: TextStyle(
                       color: Colors.redAccent,
                       fontSize: 18,
@@ -107,7 +128,8 @@ class _RegisterState extends State<Register> {
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
                       child: Text(
-                        "Your User ID is $user_id",
+                      "Your User Id is user_id",
+
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -115,13 +137,15 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                   ),
-                  ElevatedButton(onPressed: (){
+                  ElevatedButton(onPressed: ()
                     // setState(() {
                     //   name=name_control;
                     //   locality=locality_control;
                     //   phone=ph_no_control;
                     // });
-                    Navigator.pushNamed(context, "/Main");
+                    {
+
+                    Navigator.pushReplacementNamed(context, "/Main");
                   }, child: Text("Got It",
                     style: TextStyle(
                       color: Colors.redAccent,

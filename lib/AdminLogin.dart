@@ -82,10 +82,11 @@ class _AdminLoginState extends State<AdminLogin> {
                 ),
                 ElevatedButton(onPressed: (){
                   setState(() {
-                    username=username_control;
-                    password=password_controller;
+                    username=username_control.text;
+                    password=password_controller.text;
                   });
-                  Navigator.pushNamed(context, '/Admin');
+                  if(username=='arjun' && password=="arjun")
+                    Navigator.pushReplacementNamed(context, '/Admin');
                 }, child: Text("Submit",style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,

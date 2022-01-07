@@ -32,7 +32,7 @@ class _AdminState extends State<Admin> {
                   fontWeight: FontWeight.bold,
                 ) ,),
               ElevatedButton(onPressed: (){
-                Navigator.pushNamed(context, "/Main");
+                Navigator.pushReplacementNamed(context, "/Main");
               }, child: Text(""
                   "Done",
                 style: TextStyle(

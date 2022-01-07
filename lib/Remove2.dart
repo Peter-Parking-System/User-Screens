@@ -90,7 +90,7 @@ class _RemoveState extends State<Remove2> {
                     //   // print(userid);
                     // }
                     // );
-                    Navigator.pushNamed(context, "/Main");
+                    Navigator.pushReplacementNamed(context, "/Main");
                   }, child: Text("Got It",
                     style: TextStyle(
                       color: Colors.amberAccent,
