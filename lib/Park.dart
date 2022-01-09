@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:peter_parking/DataFIle.dart';
+import 'package:http/http.dart' as http;
 
 class Park extends StatefulWidget {
   const Park({Key? key}) : super(key: key);
@@ -10,7 +11,20 @@ class Park extends StatefulWidget {
 }
 
 class _ParkState extends State<Park> {
+
+  Future<http.Response> park(String rc_no) async {
+    return http.post(Uri.parse('http://10.0.2.2:6060/Park/Park'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: json.encode(<String, String>{
+        'rc_no': rc_no,
+      }),
+    );
+  }
   @override
+
+
   final usercontrol=new TextEditingController();
   final rccontrol=new TextEditingController();
 
@@ -76,16 +90,15 @@ class _ParkState extends State<Park> {
                       ),
                     ),
                   ),
-                  ElevatedButton(onPressed: (){
-                    setState(() {
-                      rcno=rccontrol.text;
-                      // user=usercontrol.text;
-                      // userid=int.parse(user);
-                      // print(rcno);
-                      // print(userid);
-                    });
-                    Navigator.pushReplacementNamed(context, "/Park2");
-                  }, child: Text("Park",
+                  ElevatedButton(onPressed: ()
+                    async{
+                    rcno=rccontrol.text;
+                      http.Response response=await park(rcno);
+                      String data = json.decode(response.body);
+                      print(data);
+                      // Navigator.pushReplacementNamed(context, "/Park2");
+                    },
+                   child: Text("Park",
                   style: TextStyle(
                     color: Colors.amberAccent,
                     fontSize: 18,

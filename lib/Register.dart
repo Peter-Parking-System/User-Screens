@@ -20,7 +20,7 @@ class _RegisterState extends State<Register> {
   final ph_no_control= new TextEditingController();
   final locality_control= new TextEditingController();
 
-  Future<http.Response> register(String name, String ph_number,String local) async {
+  Future<http.Response> register(String name,String local, String ph_number) async {
     return http.post(Uri.parse('http://10.0.2.2:6060/Owner/newOwner'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -109,7 +109,6 @@ class _RegisterState extends State<Register> {
                               name=name_control.text;
                               locality=locality_control.text;
                               phone=ph_no_control.text;
-
                               http.Response response=await register(name, locality  ,phone);
                               Map data = json.decode(response.body);
                               int user_id=data['message'];
