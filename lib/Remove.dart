@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
 import 'package:peter_parking/DataFIle.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 
 class Remove extends StatefulWidget {
   const Remove({Key? key}) : super(key: key);
@@ -10,10 +12,22 @@ class Remove extends StatefulWidget {
 }
 
 class _RemoveState extends State<Remove> {
+
+  Future<http.Response> exit_park(String ticket) async {
+    return http.post(Uri.parse('http://10.0.2.2:6060/Park/exitPark'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: json.encode(<String, dynamic>{
+        'ticket_id': ticket
+      }),
+    );
+  }
   @override
 
-  final rccontrol=new TextEditingController();
-  String rcno="";
+  final ticket_id_control=new TextEditingController();
+  String ticket="";
+  int ticket_id=0;
 
   Widget build(BuildContext context) {
     return Center(
@@ -54,10 +68,10 @@ class _RemoveState extends State<Remove> {
                       margin: EdgeInsets.all(10),
                       elevation: 20,
                       child:TextField(
-                        controller: rccontrol,
+                        controller: ticket_id_control,
                         decoration: InputDecoration(
-                            hintText:"Enter RC Number",
-                            labelText: "RC Number",
+                            hintText:"Enter Ticket ID",
+                            labelText: "Ticket ID",
                             labelStyle: TextStyle(
                               color: Colors.amber,
                               fontWeight: FontWeight.bold,
@@ -69,14 +83,13 @@ class _RemoveState extends State<Remove> {
                 ),
                 Container(
                   margin: EdgeInsets.all(25),
-                  child: ElevatedButton(onPressed: (){
-                    setState(() {
-                      rcno=rccontrol.text;
-                      //print(rcno);
-                      // print(userid);
-                    }
-                    );
-                    Navigator.pushReplacementNamed(context, "/Remove2");
+                  child: ElevatedButton(onPressed: ()async{
+                    ticket=ticket_id_control.text;
+                    http.Response response=await exit_park(ticket);
+                    Map data = json.decode(response.body);
+                    dynamic user_id=data['message'];
+                    print(user_id);
+
                   }, child: Text("Exit Parking",
                     style: TextStyle(
                       color: Colors.amberAccent,

@@ -15,7 +15,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/AddCar',
+  initialRoute: '/Main',
   routes: {
     '/Main':(context)=>Main_Screen(),
     '/User':(context)=>User_Login(),

@@ -109,6 +109,9 @@ class _RegisterState extends State<Register> {
                               name=name_control.text;
                               locality=locality_control.text;
                               phone=ph_no_control.text;
+                              print(name);
+                              print(locality);
+                              print(phone);
                               http.Response response=await register(name, locality  ,phone);
                               Map data = json.decode(response.body);
                               int user_id=data['message'];
