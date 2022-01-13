@@ -96,7 +96,7 @@ class _ParkState extends State<Park> {
                       http.Response response=await park(rcno);
                       String data = json.decode(response.body);
                       print(data);
-                      // Navigator.pushReplacementNamed(context, "/Park2");
+                      Navigator.pushReplacementNamed(context, "/Park2");
                     },
                    child: Text("Park",
                   style: TextStyle(

@@ -121,6 +121,7 @@ class _AddCarState extends State<AddCar> {
                       Map data = json.decode(response.body);
                       String user=data['message'];
                       print(user);
+                      Navigator.pushReplacementNamed(context, "/Main");
                     },
                 child: Text("Submit",
                     style: TextStyle(

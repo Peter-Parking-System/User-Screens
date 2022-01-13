@@ -87,8 +87,9 @@ class _RemoveState extends State<Remove> {
                     ticket=ticket_id_control.text;
                     http.Response response=await exit_park(ticket);
                     Map data = json.decode(response.body);
-                    dynamic user_id=data['message'];
+                    var user_id=data['message'];
                     print(user_id);
+                    Navigator.pushReplacementNamed(context, "/Main");
 
                   }, child: Text("Exit Parking",
                     style: TextStyle(
