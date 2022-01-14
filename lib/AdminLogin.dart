@@ -85,7 +85,7 @@ class _AdminLoginState extends State<AdminLogin> {
                     username=username_control.text;
                     password=password_controller.text;
                   });
-                  if(username=='arjun' && password=="arjun")
+                  if(username=='Admin' && password=="password")
                     Navigator.pushReplacementNamed(context, '/Admin');
                 }, child: Text("Submit",style: TextStyle(
                   color: Colors.black,

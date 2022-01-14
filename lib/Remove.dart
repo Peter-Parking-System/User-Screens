@@ -52,7 +52,7 @@ class _RemoveState extends State<Remove> {
                   child:Padding(
                   padding: EdgeInsets.fromLTRB(50, 25, 50, 25),
                   child:Text(
-                      "Enter RC Number to Exit",
+                      "Enter Ticket ID to Exit",
                     style: TextStyle(
                       color: Colors.redAccent,
                       fontSize: 20,

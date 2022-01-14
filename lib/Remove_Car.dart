@@ -15,7 +15,7 @@ class _RemoveCarState extends State<RemoveCar> {
 
   var rc_no;
   final rc_no_controller=new TextEditingController();
-
+  final control_new=new TextEditingController();
   Future<http.Response> delete_car(String rc_no) async {
     return http.post(Uri.parse('http://10.01.2.2:6060/Car/removeCar'),
       headers: <String, String>{
@@ -69,7 +69,7 @@ class _RemoveCarState extends State<RemoveCar> {
                     child: Padding(
                       padding: EdgeInsets.all(10),
                       child: TextField(
-                        controller: rc_no_controller,
+                        controller: control_new,
                         decoration: InputDecoration(
                           hintText:"Enter Your RC Number",
                           labelText: "RC Number",
@@ -81,9 +81,9 @@ class _RemoveCarState extends State<RemoveCar> {
                       ),
                     ),
                   ),
-                  TextButton(onPressed: ()
+                  ElevatedButton(onPressed: ()
                     async{
-                      rc_no=rc_no_controller.text;
+                      rc_no=control_new.text;
                       http.Response response=await delete_car(rc_no);
                       // String data = json.decode(response.body);
                       // print(data);
