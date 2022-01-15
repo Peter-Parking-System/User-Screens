@@ -50,26 +50,6 @@ class _ParkState extends State<Park> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  // Container(
-                  //   child: Padding(
-                  //     padding: const EdgeInsets.all(10.0),
-                  //     child: Card(
-                  //       margin: EdgeInsets.all(10),
-                  //          elevation: 20,
-                  //          child:TextField(
-                  //           controller: usercontrol,
-                  //           decoration: InputDecoration(
-                  //             hintText:"Enter User Id",
-                  //             labelText: "User Id",
-                  //             labelStyle: TextStyle(
-                  //               color: Colors.amber,
-                  //               fontWeight: FontWeight.bold,
-                  //             )
-                  //           ),
-                  //          ),
-                  //     ),
-                  //   ),
-                  // ),
                   Container(
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -94,9 +74,13 @@ class _ParkState extends State<Park> {
                     async{
                     rcno=rccontrol.text;
                       http.Response response=await park(rcno);
-                      String data = json.decode(response.body);
-                      print(data);
-                      Navigator.pushReplacementNamed(context, "/Park2");
+                      Map data = json.decode(response.body);
+                      String data1=data['message'];
+                      Navigator.pushReplacementNamed(context, "/Box",arguments:
+                      {
+                        'title':data1,
+                        'content':' '
+                      });
                     },
                    child: Text("Park",
                   style: TextStyle(

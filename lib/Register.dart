@@ -116,39 +116,13 @@ class _RegisterState extends State<Register> {
                               Map data = json.decode(response.body);
                               int user_id=data['message'];
                               print(user_id);
+                              // getId(context,user_id,"User id is");
+                              Navigator.pushReplacementNamed(context, '/Box',arguments: {
+                                'title':'Your User Id is',
+                                'content':user_id
+                              });
                   },
                     child: Text("Submit",
-                    style: TextStyle(
-                      color: Colors.redAccent,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  ),
-                  Card(
-                    margin: EdgeInsets.all(25),
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
-                      child: Text(
-                      "Your User Id is user_id",
-
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(onPressed: ()
-                    // setState(() {
-                    //   name=name_control;
-                    //   locality=locality_control;
-                    //   phone=ph_no_control;
-                    // });
-                    {
-
-                    Navigator.pushReplacementNamed(context, "/Main");
-                  }, child: Text("Got It",
                     style: TextStyle(
                       color: Colors.redAccent,
                       fontSize: 18,

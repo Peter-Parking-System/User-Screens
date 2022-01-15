@@ -120,8 +120,10 @@ class _AddCarState extends State<AddCar> {
                       http.Response response=await add_car(rcno, ownerid ,model);
                       Map data = json.decode(response.body);
                       String user=data['message'];
-                      print(user);
-                      Navigator.pushReplacementNamed(context, "/Main");
+                      Navigator.pushReplacementNamed(context, "/Box",arguments: {
+                        'title':user,
+                        'content':""
+                      });
                     },
                 child: Text("Submit",
                     style: TextStyle(

@@ -88,8 +88,10 @@ class _RemoveState extends State<Remove> {
                     http.Response response=await exit_park(ticket);
                     Map data = json.decode(response.body);
                     var user_id=data['message'];
-                    print(user_id);
-                    Navigator.pushReplacementNamed(context, "/Main");
+                    Navigator.pushReplacementNamed(context, "/Box",arguments: {
+                      'title':'Your Car has been successfully removed from parking. Please pay Rs $user_id',
+                      'content':""
+                    });
 
                   }, child: Text("Exit Parking",
                     style: TextStyle(

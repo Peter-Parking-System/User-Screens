@@ -19,6 +19,7 @@ class _Main_ScreenState extends State<Main_Screen> {
             child: Text(
               "Peter Parking System",
               style: TextStyle(
+                color: Colors.amber,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
