@@ -69,6 +69,14 @@ class _OwnersState extends State<Owners> {
                                               fontSize: 18,
                                               color: Color.fromRGBO(251, 251, 251, 1)
                                           ),),
+                                        Text('Owner Id',
+                                          style: TextStyle(
+                                              fontFamily: 'montserrat',
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 14,
+                                              color: Color.fromRGBO(251, 251, 251, 1)
+                                          ),textAlign: TextAlign.end,
+                                        ),
 
                                         SizedBox(height: 20,),
 
@@ -76,9 +84,17 @@ class _OwnersState extends State<Owners> {
                                           style: TextStyle(
                                               fontFamily: 'montserrat',
                                               fontWeight: FontWeight.w700,
-                                              fontSize: 14,
+                                              fontSize: 18,
                                               color: Color.fromRGBO(251, 251, 251, 1)
                                           ),),
+                                        Text('Locality',
+                                          style: TextStyle(
+                                              fontFamily: 'montserrat',
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 14,
+                                              color: Color.fromRGBO(251, 251, 251, 1)
+                                          ),textAlign: TextAlign.end,
+                                        ),
                                       ],
                                     ),
 
@@ -92,10 +108,25 @@ class _OwnersState extends State<Owners> {
                                               fontSize: 18,
                                               color: Color.fromRGBO(251, 251, 251, 1)
                                           ), textAlign: TextAlign.end,),
-
+                                        Text('Name',
+                                          style: TextStyle(
+                                              fontFamily: 'montserrat',
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 14,
+                                              color: Color.fromRGBO(251, 251, 251, 1)
+                                          ),textAlign: TextAlign.end,
+                                        ),
                                         SizedBox(height: 20,),
 
                                         Text('${Phone[index]}',
+                                          style: TextStyle(
+                                              fontFamily: 'montserrat',
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 18,
+                                              color: Color.fromRGBO(251, 251, 251, 1)
+                                          ),textAlign: TextAlign.end,
+                                        ),
+                                        Text('Phone Number',
                                           style: TextStyle(
                                               fontFamily: 'montserrat',
                                               fontWeight: FontWeight.w700,

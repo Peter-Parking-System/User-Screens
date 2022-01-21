@@ -51,28 +51,28 @@ class _OptionsState extends State<Options> {
                     ),
                   ),
                 ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(50, 25, 50, 25),
-                child: Card(
-                  color: Colors.lightBlueAccent,
-                  child: Padding(
-                      padding: EdgeInsets.all(15),
-                      child:TextButton(
-                        onPressed: (){
-                          Navigator.pushReplacementNamed(context, "/RemoveCar");
-                        },
-                        child: Text(
-                          "REMOVE",
-                          style: TextStyle(
-                            color: Colors.amber,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
-                      )
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.fromLTRB(50, 25, 50, 25),
+              //   child: Card(
+              //     color: Colors.lightBlueAccent,
+              //     child: Padding(
+              //         padding: EdgeInsets.all(15),
+              //         child:TextButton(
+              //           onPressed: (){
+              //             Navigator.pushReplacementNamed(context, "/RemoveCar");
+              //           },
+              //           child: Text(
+              //             "REMOVE",
+              //             style: TextStyle(
+              //               color: Colors.amber,
+              //               fontWeight: FontWeight.bold,
+              //               fontSize: 18,
+              //             ),
+              //           ),
+              //         )
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           ),

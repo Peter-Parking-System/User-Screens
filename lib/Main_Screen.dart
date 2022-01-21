@@ -94,7 +94,7 @@ class _Main_ScreenState extends State<Main_Screen> {
                     child: TextButton(onPressed: (){
                       Navigator.pushReplacementNamed(context, "/Options");
                     }, child: Text(
-                      "Add/Remove a Car",
+                      "Add a Car",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,

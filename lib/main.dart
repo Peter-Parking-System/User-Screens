@@ -13,6 +13,8 @@ import 'package:peter_parking/Admin.dart';
 import 'package:peter_parking/AdminLogin.dart';
 import 'package:peter_parking/DialogBox.dart';
 import 'package:peter_parking/Owners.dart';
+import 'package:peter_parking/ParkedCars.dart';
+import 'package:peter_parking/Cars.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -33,5 +35,7 @@ void main() => runApp(MaterialApp(
     '/Admin':(context)=>Admin(),
     '/Box':(context)=>DialogBox(),
     '/Owner':(context)=>Owners(),
+    '/PC':(context)=>ParkedCars(),
+    '/Cars':(context)=>Cars(),
   },
 ));
