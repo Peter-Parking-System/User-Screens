@@ -39,27 +39,20 @@ class _AdminState extends State<Admin> {
 
   Future<http.Response> getOwner() async{
    return  http.get(Uri.parse("http://10.0.2.2:6060/Admin/getOwners"));
-//   String url= "http://10.0.2.2:6060/admin_view/getParked";
-    // var display=json.decode(response.body);
-  // List<AllOwners> owners=[];
-  // for (var i in display){
-  //   AllOwners a=AllOwners(Owner_Id: i['owner_id'], Owner_Name: i['owner_name'], Local: i['locality'], phone: i['phone_no']);
-  //   owners.add(a);
-  //   print(a);
-  // }
-  // return owners;
 }
   @override
-  // void initState(){
-  //   super.initState();
-  //   futureCars=fetchCars();
-  // }
   Widget build(BuildContext context) {
+    List owner_id=[];
+    List car_no=[];
+    List names=[];
+    List models=[];
+    List locality=[];
+    List phones=[];
     return Scaffold(
       appBar: AppBar(
         title:Text('Peter Parking Login',
           style: TextStyle(
-            color: Colors.red,
+            color: Colors.amber,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
@@ -68,51 +61,74 @@ class _AdminState extends State<Admin> {
       body: Center(
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Text("All Cars Parked",
+              Text("What would you like to view?",
                 style:TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                ) ,),
-              // Container(
-              //   padding: EdgeInsets.all(16),
-              //   child: FutureBuilder(
-              //     future: getOwner(),
-              //     builder: (BuildContext ctx, AsyncSnapshot snapshot){
-              //       if(snapshot.data==null){
-              //         return Container(
-              //           child: Center(
-              //             child: CircularProgressIndicator(),
-              //           ),
-              //         );
-              //       }else
-              //         {
-              //           return ListView.builder(itemCount:snapshot.data.length,
-              //               itemBuilder: (ctx,index)=>ListTile(
-              //                 title: Text(snapshot.data[index].title),
-              //                 subtitle: Text(snapshot.data[index].body),
-              //                 contentPadding: EdgeInsets.only(bottom: 20),
-              //               ),
-              //           );
-              //         }
-              //     },
-              //   ),
-              // ),
-              ElevatedButton(onPressed: ()
-              async{
-                http.Response response=await getOwner();
-                Map data=json.decode(response.body);
-                print(data['rows']);
-                Navigator.pushReplacementNamed(context, "/Main");
-              }, child: Text(""
-                  "Done",
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
                 ),
               ),
+              SizedBox(height: 20,),
+              Center(
+                child: RaisedButton(onPressed: () async{
+                  http.Response response=await getOwner();
+                    List data=json.decode(response.body);
+                    for (var i in data){
+                     owner_id.add(i['owner_id']);
+                     names.add(i['owner_name']);
+                     locality.add(i['locality']);
+                     phones.add(i['phone_no']);
+                    }
+                    Navigator.pushNamed(context, "/Owner",arguments: {
+                      'OiD':owner_id,
+                      'ON':names,
+                      'L':locality,
+                      'P':phones,
+                    });
+                },
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: Color.fromRGBO(174, 32, 62, 1),width: 4)
+                  ),
+
+                  color: Color.fromRGBO(174,32, 62, 1),
+
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                    child: Text('Owners', style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 24,
+                      color: Color.fromRGBO(221, 195, 102, 1),
+                    ),),
+                  ),
+                ),
               ),
+              SizedBox(height: 20,),
+              Center(
+                child: RaisedButton(onPressed: (){
+                  Navigator.pushReplacementNamed(context,'/Main');
+                },
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: Color.fromRGBO(174, 32, 62, 1),width: 4)
+                  ),
+
+                  color: Color.fromRGBO(174, 32,62, 1),
+
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                    child: Text('Sign Out', style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 24,
+                      color: Color.fromRGBO(221, 195, 102, 1),
+                    ),),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20,),
             ],
           ),
         ),
