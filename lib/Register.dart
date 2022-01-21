@@ -124,7 +124,7 @@ class _RegisterState extends State<Register> {
                   },
                     child: Text("Submit",
                     style: TextStyle(
-                      color: Colors.redAccent,
+                      color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),

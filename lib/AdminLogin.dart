@@ -69,6 +69,7 @@ class _AdminLoginState extends State<AdminLogin> {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: TextField(
+                      obscureText: true,
                       controller: password_controller,
                       decoration: InputDecoration(
                         hintText: "Password",

@@ -41,13 +41,18 @@ Future<http.Response> getParked() async{
 
   @override
   Widget build(BuildContext context) {
-    List owner_id=[];
-    List car_no=[];
-    List names=[];
-    List models=[];
-    List locality=[];
-    List phones=[];
-    List slots=[];
+    List O_owner_id=[];
+    List O_names=[];
+    List O_locality=[];
+    List O_phones=[];
+    List C_car_no=[];
+    List C_owner_id=[];
+    List C_models=[];
+    List P_ticket=[];
+    List P_rc_co=[];
+    List P_floor=[];
+    List P_slots=[];
+    List P_time=[];
     return Scaffold(
       appBar: AppBar(
         title:Text('Peter Parking Login',
@@ -76,16 +81,16 @@ Future<http.Response> getParked() async{
                     List data=json.decode(response.body);
                     print(data);
                     for (var i in data){
-                     owner_id.add(i['owner_id']);
-                     names.add(i['owner_name']);
-                     locality.add(i['locality']);
-                     phones.add(i['phone_no']);
+                     O_owner_id.add(i['owner_id']);
+                     O_names.add(i['owner_name']);
+                     O_locality.add(i['locality']);
+                     O_phones.add(i['phone_no']);
                     }
                     Navigator.pushNamed(context, "/Owner",arguments: {
-                      'OiD':owner_id,
-                      'ON':names,
-                      'L':locality,
-                      'P':phones,
+                      'OiD':O_owner_id,
+                      'ON':O_names,
+                      'L':O_locality,
+                      'P':O_phones,
                     });
                 },
                   shape: RoundedRectangleBorder(
@@ -113,14 +118,14 @@ Future<http.Response> getParked() async{
                   List data=json.decode(response.body);
                   print(data);
                   for (var i in data){
-                    owner_id.add(i['rc_no']);
-                    names.add(i['owner_id']);
-                    locality.add(i['model']);
+                    C_car_no.add(i['rc_no']);
+                    C_owner_id.add(i['owner_id']);
+                    C_models.add(i['model']);
                   }
                   Navigator.pushNamed(context, "/Cars",arguments: {
-                    'RcN':owner_id,
-                    'OiD':names,
-                    'M':locality,
+                    'RcN':C_car_no,
+                    'OiD':C_owner_id,
+                    'M':C_models,
                   });
                 },
                   shape: RoundedRectangleBorder(
@@ -148,18 +153,18 @@ Future<http.Response> getParked() async{
                   List data=json.decode(response.body);
                   print(data);
                   for (var i in data){
-                    owner_id.add(i['ticket_no']);
-                    names.add(i['rc_no']);
-                    locality.add(i['floor_no']);
-                    phones.add(i['time_in']);
-                    slots.add(i['slot']);
+                    P_ticket.add(i['ticket_no']);
+                    P_rc_co.add(i['rc_no']);
+                    P_floor.add(i['floor_no']);
+                    P_time.add(i['time_in']);
+                    P_slots.add(i['slot']);
                   }
                   Navigator.pushNamed(context, "/PC",arguments: {
-                    'TN':owner_id,
-                    'RcN':names,
-                    'FlN':locality,
-                    'TI':phones,
-                    'S':slots,
+                    'TN':P_ticket,
+                    'RcN':P_rc_co,
+                    'FlN':P_floor,
+                    'TI':P_time,
+                    'S':P_slots,
                   });
                 },
                   shape: RoundedRectangleBorder(
